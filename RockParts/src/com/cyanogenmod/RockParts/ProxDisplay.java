@@ -1,4 +1,4 @@
-package com.cyanogenmod.RockParts;
+package com.cyanogenmod.settings.device;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

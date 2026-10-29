@@ -1,12 +1,11 @@
-$(call inherit-product, $(SRC_TARGET_DIR)/product/small_base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 $(call inherit-product-if-exists, vendor/rockchip/rk2818/device-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/rockchip/rk2818/overlay
 
 # Place inital files
 PRODUCT_COPY_FILES += \
@@ -45,14 +44,13 @@ PRODUCT_COPY_FILES += \
     device/rockchip/rk2818/keylayout/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
     device/rockchip/rk2818/keylayout/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
     device/rockchip/rk2818/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-    device/rockchip/rk2818/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl
+    device/rockchip/rk2818/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    device/rockchip/rk2818/keylayout/rk28_AD_button.kl:system/usr/keylayout/rk28_AD_button.kl
 
 PRODUCT_PACKAGES += \
     Gallery \
     RockParts \
-    RKTSCalibration \
-    RockAudioPlayer \
-    RKVideoPlayer
+    RKTSCalibration
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/rockchip/rk2818/kernel/kernel.img

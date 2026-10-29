@@ -1,4 +1,4 @@
-package com.cyanogenmod.RockParts;
+package com.cyanogenmod.settings.device;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,16 +13,19 @@ import java.io.IOException;
 public class RockPartsStartup extends BroadcastReceiver
 {
    private void writeValue(String parameter, int value) {
+      File file = new File(parameter);
+      if (!file.exists() || !file.canWrite()) {
+         return;
+      }
       try {
-          FileOutputStream fos = new FileOutputStream(new File(parameter));
+          FileOutputStream fos = new FileOutputStream(file);
           fos.write(String.valueOf(value).getBytes());
           fos.flush();
-          fos.getFD().sync();
           fos.close();
       } catch (FileNotFoundException e) {
-         e.printStackTrace();
+         // Optional RK2818 sysfs node is not present.
       } catch (IOException e) {
-         e.printStackTrace();
+         // Sysfs does not support all regular-file operations.
       }
    }
 

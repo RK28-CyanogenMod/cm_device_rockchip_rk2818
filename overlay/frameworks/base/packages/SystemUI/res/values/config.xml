@@ -21,9 +21,11 @@
      for different hardware and product builds. -->
 <resources>
     <!-- Control whether status bar should have statusbar buttons (home,menu and back) available for tablet devices -->
+    <add-resource type="bool" name="config_statusbar_buttons" />
     <bool name="config_statusbar_buttons">true</bool>
 
     <!-- Control whether the phone signal should be hidden for devices without a radio -->
+    <add-resource type="bool" name="config_statusbar_hide_phone_signal" />
     <bool name="config_statusbar_hide_phone_signal">true</bool>
 </resources>
 

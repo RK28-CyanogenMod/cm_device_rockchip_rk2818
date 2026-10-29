@@ -6,7 +6,8 @@ dalvik.vm.heapsize=32m
 media.stagefright.enable-record=true
 persist.sys.use_dithering=0
 persist.sys.use_16bpp_alpha=1
-qemu.sf.lcd_density=160
+qemu.sf.lcd_density=120
+ro.sf.lcd_density=120
 ro.additionalmounts=/mnt/nand;/mnt/usb
 ro.vold.switchablepair=/mnt/sdcard,/mnt/nand
 wifi.interface=wlan0
@@ -16,3 +17,11 @@ accelerometer.invert_x=1
 #accelerometer.invert_y=1
 #accelerometer.invert_z=1
 #accelerometer.flip_xy=1
+
+# Keep StrictMode and SurfaceFlinger debug overlays off in normal use.
+persist.sys.strictmode.visual=0
+debug.sf.showupdates=0
+
+# RKTSCalibration: enable calibration and require a successful result.
+ro.secure.tscalibration=1
+app.tscalibration.force=1

@@ -1,6 +1,6 @@
-package com.cyanogenmod.RockParts;
+package com.cyanogenmod.settings.device;
 
-import com.cyanogenmod.RockParts.R;
+import com.cyanogenmod.settings.device.R;
 
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -56,16 +56,19 @@ public class RockParts extends PreferenceActivity {
     }
 
     private void writeValue(String parameter, int value) {
+        File file = new File(parameter);
+        if (!file.exists() || !file.canWrite()) {
+            return;
+        }
         try {
-            FileOutputStream fos = new FileOutputStream(new File(parameter));
+            FileOutputStream fos = new FileOutputStream(file);
             fos.write(String.valueOf(value).getBytes());
             fos.flush();
-            fos.getFD().sync();
             fos.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            // The sysfs node may be absent on a particular RK2818 board.
         } catch (IOException e) {
-            e.printStackTrace();
+            // Sysfs files can reject fsync and other regular-file operations.
         }
     }
 

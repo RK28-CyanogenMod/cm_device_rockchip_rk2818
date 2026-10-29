@@ -328,12 +328,8 @@ on boot
     write /sys/class/touchpanel/touchcalibration tp_irq
     write /sys/class/touchpanel/touchcalibration tp_cal
 
-# Include extra init file
-    import /system/etc/init.local.rc
-
-# Run sysinit
-    exec /system/bin/sysinit
-
+# Do not run the legacy sysinit synchronously on RK28.
+# Start Android service classes after filesystem setup.
     class_start default
 
 ## Daemon processes to be run by init.

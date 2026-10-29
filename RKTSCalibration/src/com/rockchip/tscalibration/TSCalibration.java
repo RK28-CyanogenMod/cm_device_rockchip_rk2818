@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemProperties;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 /* loaded from: classes.dex */
@@ -49,8 +51,10 @@ public class TSCalibration extends Activity {
     }
 
     private void setupViews() {
-        getWindow().setFlags(1024, 1024);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(1);
+        hideSystemUi();
         setContentView(R.layout.main);
         for (int i = 0; i < 5; i++) {
             this.calibrateAD[i] = new Point(-1, -1);
@@ -65,6 +69,26 @@ public class TSCalibration extends Activity {
         } else {
             this.notification.setBackgroundDrawable(getResources().getDrawable(R.drawable.notification));
         }
+    }
+
+    /** Keep calibration usable on the tablet UI, whose system bar is at the bottom. */
+    private void hideSystemUi() {
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LOW_PROFILE | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            hideSystemUi();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        hideSystemUi();
     }
 
     @Override // android.app.Activity
