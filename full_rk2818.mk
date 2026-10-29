@@ -47,6 +47,10 @@ PRODUCT_COPY_FILES += \
     device/rockchip/rk2818/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
     device/rockchip/rk2818/keylayout/rk28_AD_button.kl:system/usr/keylayout/rk28_AD_button.kl
 
+# Input device configuration for the legacy XPT2046 touchscreen.
+PRODUCT_COPY_FILES += \
+    device/rockchip/rk2818/idc/xpt2046_touchscreen.idc:system/usr/idc/xpt2046_touchscreen.idc
+
 PRODUCT_PACKAGES += \
     Gallery \
     RockParts \
