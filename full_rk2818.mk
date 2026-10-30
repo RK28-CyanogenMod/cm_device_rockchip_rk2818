@@ -74,3 +74,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=8
 PRODUCT_NAME := full_rk2818
 PRODUCT_DEVICE := rk2818
+
+# Vendor OpenCORE hardware video playback, adapted to the ICS media service.
+PRODUCT_PACKAGES += librk28pvplayer librk28pvlegacy libopencore_player_rk28

@@ -48,3 +48,6 @@ BOARD_FLASH_BLOCK_SIZE := 16384
 
 # The devices' prebuilt kernel
 TARGET_PREBUILT_KERNEL := device/rockchip/rk2818/kernel/kernel.img
+
+# Rockchip DSP video decoding through the legacy PVPlayer ABI bridge.
+BOARD_USES_RK28_OPENCORE := true
