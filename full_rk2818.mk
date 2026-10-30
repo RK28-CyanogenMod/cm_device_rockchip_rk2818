@@ -54,7 +54,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     Gallery \
     RockParts \
-    RKTSCalibration
+    RKTSCalibration \
+    audio.primary.rk28board \
+    librk28audioshim
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/rockchip/rk2818/kernel/kernel.img
