@@ -56,8 +56,6 @@ $(call inherit-product, frameworks/base/data/sounds/NewAudio.mk)
 # it in (only the common_full_* products do), so add it explicitly.
 $(call inherit-product, vendor/cm/config/cm_audio.mk)
 
-# RK2818 low-capacity system partition: omit optional CM phone/UI packages.
-PRODUCT_PACKAGES := $(filter-out Development SpareParts VideoEditor VoiceDialer SoundRecorder Basic HoloSpiralWallpaper MagicSmokeWallpapers NoiseField Galaxy4 LiveWallpapers LiveWallpapersPicker VisualizationWallpapers PhaseBeam DSPManager libcyanogen-dsp Apollo CMUpdater Home RockAudioPlayer RKVideoPlayer, $(PRODUCT_PACKAGES))
 
 # CM9's Trebuchet is the intended default launcher; the AOSP Home sample is removed above.
 PRODUCT_PACKAGES += Trebuchet
