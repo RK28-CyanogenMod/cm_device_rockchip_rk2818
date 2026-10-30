@@ -51,6 +51,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/rockchip/rk2818/idc/xpt2046_touchscreen.idc:system/usr/idc/xpt2046_touchscreen.idc
 
+# Enables the dedicated swap partition at boot (called from init.rc).
+PRODUCT_COPY_FILES += \
+    device/rockchip/rk2818/bin/swapsetup.sh:system/bin/swapsetup.sh
+
 PRODUCT_PACKAGES += \
     Gallery \
     RockParts \

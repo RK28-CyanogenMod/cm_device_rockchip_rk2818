@@ -21,7 +21,8 @@ PRODUCT_DEVICE := rk2818
 PRODUCT_MANUFACTURER := Rockchip
 PRODUCT_MODEL := RK2818
 PRODUCT_CHARACTERISTICS := tablet,nosdcard
-$(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
+# Dalvik heap is configured in system.prop instead: the tablet defaults
+# (48m growth limit, 256m max) are far too generous for 200 MB of RAM.
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=rk2818 BUILD_ID=IMM76L BUILD_DISPLAY_ID=CM9-RK2818-Skyler1n BUILD_FINGERPRINT=rockchip/rk2818/rk2818:4.0.4/IMM76L/20261029:eng/test-keys PRIVATE_BUILD_DESC="rk2818-eng 4.0.4 IMM76L 20261029 test-keys" BUILD_NUMBER=20261029
 
 # Extra RK2818 overlay

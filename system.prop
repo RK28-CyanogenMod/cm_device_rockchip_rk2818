@@ -2,7 +2,11 @@
 # system.prop for rk2818
 #
 dalvik.vm.dexopt-flags=m=y
-dalvik.vm.heapsize=32m
+# 200 MB of RAM: keep per-app heaps small instead of the tablet defaults
+# (heapgrowthlimit 48m / heapsize 256m from frameworks tablet-dalvik-heap.mk).
+dalvik.vm.heapstartsize=4m
+dalvik.vm.heapgrowthlimit=32m
+dalvik.vm.heapsize=48m
 media.stagefright.enable-record=true
 persist.sys.use_dithering=0
 persist.sys.use_16bpp_alpha=1
