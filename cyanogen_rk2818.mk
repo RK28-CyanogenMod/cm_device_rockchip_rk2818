@@ -47,6 +47,15 @@ endif
 #
 PRODUCT_COPY_FILES +=  \
 
+# System sounds.  full_base.mk still inherits frameworks/base/data/sounds/
+# AllAudio.mk, but CM9 renamed that file to NewAudio.mk, so the inherits
+# silently packaged nothing and /system/media/audio was missing entirely.
+$(call inherit-product, frameworks/base/data/sounds/NewAudio.mk)
+
+# CyanogenMod's own alarm/notification/ringtone set.  common.mk does not pull
+# it in (only the common_full_* products do), so add it explicitly.
+$(call inherit-product, vendor/cm/config/cm_audio.mk)
+
 # RK2818 low-capacity system partition: omit optional CM phone/UI packages.
 PRODUCT_PACKAGES := $(filter-out Development SpareParts VideoEditor VoiceDialer SoundRecorder Basic HoloSpiralWallpaper MagicSmokeWallpapers NoiseField Galaxy4 LiveWallpapers LiveWallpapersPicker VisualizationWallpapers PhaseBeam DSPManager libcyanogen-dsp Apollo CMUpdater Home RockAudioPlayer RKVideoPlayer, $(PRODUCT_PACKAGES))
 
