@@ -79,11 +79,12 @@ public:
         // Vendor ColorConvert16 uses displayWidth as RGB destination pitch.
         // hor_stride is the coded YUV width and only sizes the frame slots;
         // using it for RGB rows scrambles videos whose width is not 16-aligned.
-        heap=b.heap;width=b.w;height=b.h;stride=b.w;format=b.format;
+        heap=b.heap;width=b.w;height=b.h;stride=b.w;format=b.format;asynchronous=false;
         pthread_once(&surfaceKeyOnce,makeSurfaceKey);pthread_setspecific(surfaceKey,this);
-        LOGI("Video buffer %dx%d stride %d RGB565",width,height,stride);return OK;
+        ALOGI("Video buffer %dx%d stride %d RGB565",width,height,stride);return OK;
     }
     void setAsynchronous(){asynchronous=true;}
+    int direct(uint32_t phys,int w,int h){return cb.dsp_frame(cookie,phys,w,h);}
     void deliver(const void*data,int w,int h,int pitch){cb.video_frame(cookie,data,w,h,pitch,HAL_PIXEL_FORMAT_RGB_565);}
     virtual void postBuffer(ssize_t off){
         if(asynchronous)return;
@@ -92,9 +93,9 @@ public:
         void*base=heap->getBase();
         if(!base||base==MAP_FAILED)return;
         cb.video_frame(cookie,(char*)base+off,width,height,stride,format);
-        if(++frames==1||frames%120==0)LOGI("DSP frame delivered %u",frames);
+        if(++frames==1||frames%120==0)ALOGI("DSP frame delivered %u",frames);
     }
-    virtual void unregisterBuffers(){heap.clear();width=height=stride=0;}
+    virtual void unregisterBuffers(){cb.overlay_close(cookie);heap.clear();width=height=stride=0;}
     virtual sp<OverlayRef>createOverlay(uint32_t,uint32_t,int32_t,int32_t){return NULL;}
 };
 class LegacyAudio:public RKMediaPlayBase::AudioSink {
@@ -129,7 +130,7 @@ struct LegacyPlayer {
 static void legacyNotify(void*c,int m,int a,int b){LegacyPlayer*p=(LegacyPlayer*)c;p->cb.notify(p->cookie,m,a,b);}
 extern "C" void* rk28_pv_create(const RK28PVCallbacks*cb,void*cookie){
     static void*h=dlopen("libopencore_player.so",RTLD_NOW);
-    if(!h){LOGE("Load OpenCORE: %s",dlerror());return NULL;}
+    if(!h){ALOGE("Load OpenCORE: %s",dlerror());return NULL;}
     typedef void(*Ctor)(void*);
     Ctor ctor=(Ctor)dlsym(h,"_ZN7android8PVPlayerC1Ev");
     if(!ctor)return NULL;
@@ -191,7 +192,7 @@ public:
     virtual int range(bool)=0;
 };
 class RK28Convert565:public PVColor {
-    PVColor*real;int pitch,height,dstWidth,dstHeight;unsigned frames,displayed;
+    PVColor*real;int pitch,height,srcWidth,srcHeight,dstWidth,dstHeight;unsigned frames,displayed;
     uintptr_t mapStart,mapPhys;size_t mapSize,bufferSize;
     unsigned char*pendingPacked;unsigned char*renderPacked;unsigned char*planar;unsigned char*rgb;
     sp<LegacySurface>surface;
@@ -213,12 +214,12 @@ class RK28Convert565:public PVColor {
             for(size_t i=0;i<n/4;++i){planar[n+i]=renderPacked[n+2*i];planar[n+n/4+i]=renderPacked[n+2*i+1];}
             real->convert(planar,rgb);
             surface->deliver(rgb,dstWidth,dstHeight,dstWidth);
-            if(++displayed==1||displayed%120==0)LOGI("Presented DSP frame %u (received %u)",displayed,frames);
+            if(++displayed==1||displayed%120==0)ALOGI("Presented DSP frame %u (received %u)",displayed,frames);
         }
     }
 public:
     static PVColor*NewL();
-    RK28Convert565(PVColor*p,LegacySurface*s):real(p),pitch(0),height(0),dstWidth(0),dstHeight(0),frames(0),displayed(0),
+    RK28Convert565(PVColor*p,LegacySurface*s):real(p),pitch(0),height(0),srcWidth(0),srcHeight(0),dstWidth(0),dstHeight(0),frames(0),displayed(0),
         mapStart(0),mapPhys(0),mapSize(0),bufferSize(0),pendingPacked(NULL),renderPacked(NULL),planar(NULL),rgb(NULL),
         surface(s),started(false),exiting(false),pending(false){}
     virtual ~RK28Convert565(){
@@ -227,7 +228,7 @@ public:
     }
     virtual short capability(){return real->capability();}
     virtual int init(int w,int h,int p,int dw,int dh,int dp,int r){
-        pitch=p;height=h;dstWidth=dw;dstHeight=dh;
+        pitch=p;height=h;srcWidth=w;srcHeight=h;dstWidth=dw;dstHeight=dh;
         return real->init(w,h,p,dw,dh,dp,r);
     }
     virtual void memheight(int h){height=h;real->memheight(h);}
@@ -235,6 +236,7 @@ public:
     virtual int convert(unsigned char*s,unsigned char*d){
         uint32_t phys;memcpy(&phys,s,sizeof(phys));size_t n=(size_t)pitch*height;
         if(surface.get()&&phys>=0x60000000&&phys<0x80000000){
+            if(surface->direct(phys,srcWidth,srcHeight)){surface->setAsynchronous();return 1;}
             if(!mapStart||phys<mapPhys||(size_t)(phys-mapPhys)+n*3/2>mapSize){
                 FILE*f=fopen("/proc/self/maps","r");char line[256];mapStart=0;
                 while(f&&fgets(line,sizeof(line),f)){
@@ -246,7 +248,7 @@ public:
                 }
                 if(f)fclose(f);
             }
-            if(!mapStart){LOGE("Unmapped DSP frame %08x",phys);return 0;}
+            if(!mapStart){ALOGE("Unmapped DSP frame %08x",phys);return 0;}
             if(!started){
                 bufferSize=n*3/2;pendingPacked=(unsigned char*)malloc(bufferSize);renderPacked=(unsigned char*)malloc(bufferSize);
                 planar=(unsigned char*)malloc(bufferSize);rgb=(unsigned char*)malloc((size_t)pitch*height*2);

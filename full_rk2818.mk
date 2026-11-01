@@ -83,6 +83,6 @@ PRODUCT_COPY_FILES += \
 # Keep the legacy adbd trigger usable before Android has finished booting.
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.service.adb.enable=1 ro.adb.secure=0
 
-# Vendor OpenCORE hardware video playback, adapted to the ICS media service.
-PRODUCT_PACKAGES += librk28pvplayer librk28pvlegacy libopencore_player_rk28
+# Stock DSP/PV player behind the Android 4.2 media service adapter.
+PRODUCT_PACKAGES += librk28pvlegacy librk28pvplayer libopencore_player_rk28 libsurfaceflinger_client
 

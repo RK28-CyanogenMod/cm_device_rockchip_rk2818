@@ -16,6 +16,8 @@ typedef struct {
     int (*audio_position)(void*,uint32_t*);
     int (*audio_info)(void*,int);
     void (*video_frame)(void*,const void*,int,int,int,int);
+    int (*dsp_frame)(void*,uint32_t,int,int);
+    void (*overlay_close)(void*);
 } RK28PVCallbacks;
 enum { RK28_AUDIO_START, RK28_AUDIO_STOP, RK28_AUDIO_FLUSH, RK28_AUDIO_PAUSE, RK28_AUDIO_CLOSE };
 enum { RK28_AUDIO_READY, RK28_AUDIO_BUFFER_SIZE, RK28_AUDIO_FRAME_COUNT, RK28_AUDIO_CHANNELS,
