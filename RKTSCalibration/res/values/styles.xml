@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Keep the full display available to the driver's fixed calibration targets. -->
+    <style name="CalibrationTheme" parent="android:style/Theme.Holo.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
+</resources>
