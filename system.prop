@@ -40,6 +40,9 @@ ro.rk28.tablet_ui=true
 # PixelFlinger has no FBO screenshot surface for the rotation animation.
 ro.rk28.no_rotation_anim=true
 
+# Stock 2.6.25 kernel has no netfilter firewall tables.
+ro.rk28.no_iptables=1
+
 # Skip both CRT animators and GL capture on the stock RK2818 display.
 ro.rk28.disable_crt=1
 
