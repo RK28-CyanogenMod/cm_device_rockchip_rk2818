@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Use Keyguard's built-in time/date/alarm view, without cLock. -->
+    <string name="widget_default_package_name" translatable="false"></string>
+    <string name="widget_default_class_name" translatable="false"></string>
+    <bool name="config_cellBroadcastAppLinks">false</bool>
+</resources>

@@ -19,7 +19,13 @@ LOCAL_PACKAGE_NAME := RockParts
 # only records a tag, and the product variables are merged after every product
 # fragment has been parsed, leaving PRODUCT_PACKAGES empty at that point.
 LOCAL_OVERRIDES_PACKAGES := \
+    CellBroadcastReceiver \
+    LockClock \
+    VoicePlus \
     Gallery2 \
+    Launcher2 \
+    Email2 \
+    Exchange2 \
     Development \
     SpareParts \
     VideoEditor \
