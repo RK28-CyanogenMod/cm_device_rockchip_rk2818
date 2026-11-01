@@ -37,6 +37,9 @@ debug.sf.no_hw_vsync=1
 # Keep the combined tablet bar on the 800x480 screen at 120 dpi.
 ro.rk28.tablet_ui=true
 
+# PixelFlinger has no FBO screenshot surface for the rotation animation.
+ro.rk28.no_rotation_anim=true
+
 # init.rc starts the standalone Jelly Bean compositor. Do not start a second
 # SurfaceFlinger inside system_server after every zygote restart.
 system_init.startsurfaceflinger=0
