@@ -6,7 +6,9 @@ BOARD_USE_FROYO_LIBCAMERA := false
 -include vendor/rockchip/rk2818/BoardConfigVendor.mk
 
 TARGET_BOARD_PLATFORM := rk2818
+TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi
+TARGET_CPU_VARIANT := arm926ej-s
 TARGET_ARCH_VARIANT := armv5te
 TARGET_ARCH_VARIANT_CPU := arm926ej-s
 TARGET_PROVIDES_INIT_RC := true
@@ -51,3 +53,15 @@ TARGET_PREBUILT_KERNEL := device/rockchip/rk2818/kernel/kernel.img
 
 # Rockchip DSP video decoding through the legacy PVPlayer ABI bridge.
 BOARD_USES_RK28_OPENCORE := true
+
+# ARM926 has no TLS system register, VFP or NEON; use portable implementations.
+TARGET_ARCH_VARIANT_CPU := arm926ej-s
+ARCH_ARM_HAVE_TLS_REGISTER := false
+ARCH_ARM_HAVE_NEON := false
+ARCH_ARM_HAVE_VFP := false
+TARGET_CPU_SMP := false
+# The RK2818 software EGL driver needs the framebuffer-native window ABI.
+BOARD_EGL_NEEDS_LEGACY_FB := true
+TARGET_DISABLE_TRIPLE_BUFFERING := true
+BOARD_HAVE_PRE_ANDROID_4_2_PMEM := true
+
