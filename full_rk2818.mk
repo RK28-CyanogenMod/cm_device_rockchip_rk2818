@@ -21,6 +21,7 @@ PRODUCT_COPY_FILES += \
     device/rockchip/rk2818/init.d/10pointercal:system/etc/init.d/10pointercal \
     device/rockchip/rk2818/etc/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
     device/rockchip/rk2818/etc/vold.fstab:system/etc/vold.fstab \
+    device/rockchip/rk2818/etc/media_codecs.xml:system/etc/media_codecs.xml \
     device/rockchip/rk2818/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 # Place modules files

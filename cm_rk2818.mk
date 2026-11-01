@@ -61,3 +61,8 @@ $(call inherit-product, vendor/cm/config/cm_audio.mk)
 # CM9's Trebuchet is the intended default launcher; the AOSP Home sample is removed above.
 PRODUCT_PACKAGES += Trebuchet
 
+# MediaScanner uses these filenames to initialize sounds on a clean install.
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.ringtone=CyanTone.ogg \
+    ro.config.notification_sound=CyanMessage.ogg \
+    ro.config.alarm_alert=CyanAlarm.ogg
