@@ -2527,9 +2527,9 @@ public class VideoController extends FrameLayout implements View.OnClickListener
         ImageView button;
         if (this.mRoot != null && (button = (ImageView) this.mRoot.findViewById(R.id.menubar_button_play)) != null) {
             if (this.mPlayer.isPlaying()) {
-                button.setImageResource(R.drawable.video_button_pause);
+                button.setImageResource(android.R.drawable.ic_media_pause);
             } else {
-                button.setImageResource(R.drawable.video_button_play);
+                button.setImageResource(android.R.drawable.ic_media_play);
             }
         }
     }
@@ -2761,7 +2761,7 @@ public class VideoController extends FrameLayout implements View.OnClickListener
     }
 
     public void showAboutDialog() {
-        this.AboutDialog = new AlertDialog.Builder(getContext()).setInverseBackgroundForced(true).setAdapter(new ChoiceListAdapter(getContext(), R.layout.choice_item, choiceItems), this.mAboutDialogClickListener).setTitle(R.string.resume_playing_title).show();
+        this.AboutDialog = new AlertDialog.Builder(getContext()).setAdapter(new ChoiceListAdapter(getContext(), R.layout.choice_item, choiceItems), this.mAboutDialogClickListener).setTitle(R.string.resume_playing_title).show();
     }
 
     /* loaded from: classes.dex */

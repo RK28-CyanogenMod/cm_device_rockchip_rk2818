@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="VideoTheme" parent="android:style/Theme.Holo" />
+    <style name="VideoFullscreenTheme" parent="android:style/Theme.Holo.NoActionBar.Fullscreen">
+        <!-- The stock DSP overlay uses a black SurfaceView color key. -->
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
+</resources>

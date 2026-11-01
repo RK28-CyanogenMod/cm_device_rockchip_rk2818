@@ -1075,7 +1075,7 @@ public class VideoDisplayView extends SurfaceView implements VideoController.Vid
     @Override // android.rk.RockVideoPlayer.VideoController.VideoPlayerControl
     public void DisplayRepeat() {
         this.mHandler.removeMessages(1);
-        this.RepeatDialog = new AlertDialog.Builder(getContext()).setInverseBackgroundForced(true).setAdapter(new ChoiceListAdapter(getContext(), R.layout.choice_item, addChoices()), new DialogInterface.OnClickListener() { // from class: android.rk.RockVideoPlayer.VideoDisplayView.16
+        this.RepeatDialog = new AlertDialog.Builder(getContext()).setAdapter(new ChoiceListAdapter(getContext(), R.layout.choice_item, addChoices()), new DialogInterface.OnClickListener() { // from class: android.rk.RockVideoPlayer.VideoDisplayView.16
             @Override // android.content.DialogInterface.OnClickListener
             public void onClick(DialogInterface dialog, int item) {
                 switch (item) {

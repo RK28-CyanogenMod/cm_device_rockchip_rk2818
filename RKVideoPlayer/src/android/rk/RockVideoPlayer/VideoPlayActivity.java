@@ -769,7 +769,7 @@ public class VideoPlayActivity extends Activity implements MediaPlayer.OnErrorLi
     }
 
     public void DisplayTvout() {
-        this.TVOutAlert = new AlertDialog.Builder(this).setInverseBackgroundForced(true).setAdapter(new ChoiceListAdapter(this, R.layout.choice_item, addTVOutChoices()), new DialogInterface.OnClickListener() { // from class: android.rk.RockVideoPlayer.VideoPlayActivity.11
+        this.TVOutAlert = new AlertDialog.Builder(this).setAdapter(new ChoiceListAdapter(this, R.layout.choice_item, addTVOutChoices()), new DialogInterface.OnClickListener() { // from class: android.rk.RockVideoPlayer.VideoPlayActivity.11
             @Override // android.content.DialogInterface.OnClickListener
             public void onClick(DialogInterface dialog, int item) {
                 VideoPlayActivity.this.LOG("TVOutAlert.onClick() : User clicked item '" + item + "'.");
@@ -835,7 +835,7 @@ public class VideoPlayActivity extends Activity implements MediaPlayer.OnErrorLi
     }
 
     public void DisplayHdmi() {
-        this.HdmiAlert = new AlertDialog.Builder(this).setInverseBackgroundForced(true).setAdapter(new ChoiceListAdapter(this, R.layout.choice_item, addHdmiChoices()), new DialogInterface.OnClickListener() { // from class: android.rk.RockVideoPlayer.VideoPlayActivity.12
+        this.HdmiAlert = new AlertDialog.Builder(this).setAdapter(new ChoiceListAdapter(this, R.layout.choice_item, addHdmiChoices()), new DialogInterface.OnClickListener() { // from class: android.rk.RockVideoPlayer.VideoPlayActivity.12
             @Override // android.content.DialogInterface.OnClickListener
             public void onClick(DialogInterface dialog, int item) {
                 switch (item) {

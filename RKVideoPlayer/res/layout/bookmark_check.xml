@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal" android:id="@+id/bookmarkcheck_view" android:layout_width="320dp" android:layout_height="50dp">
-    <Button android:textColor="@color/deepbrown" android:id="@+id/play_begin" android:layout_width="160dp" android:layout_height="50dp" android:text="@string/VideoView_playfrom_beginning"/>
-    <Button android:textColor="@color/deepbrown" android:id="@+id/play_bookmark" android:layout_width="160dp" android:layout_height="50dp" android:text="@string/VideoView_playfrom_bookmark"/>
+    <Button android:textColor="?android:attr/textColorPrimary" android:id="@+id/play_begin" android:layout_width="160dp" android:layout_height="50dp" android:text="@string/VideoView_playfrom_beginning"/>
+    <Button android:textColor="?android:attr/textColorPrimary" android:id="@+id/play_bookmark" android:layout_width="160dp" android:layout_height="50dp" android:text="@string/VideoView_playfrom_bookmark"/>
 </LinearLayout>

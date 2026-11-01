@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:id="@+id/menubar_land" android:layout_width="match_parent" android:layout_height="match_parent">
-    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@+id/time_progress" android:background="@drawable/bottom_progress" android:layout_width="match_parent" android:layout_height="55dp">
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@+id/time_progress" android:background="@drawable/holo_controller_background" android:layout_width="match_parent" android:layout_height="55dp">
         <FrameLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.1">
-            <android.rk.RockVideoPlayer.RepeatingImageButton android:id="@+id/menubar_button_volumeminus" android:background="@drawable/seletc_framelayout_bk" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_volumeminus"/>
+            <android.rk.RockVideoPlayer.RepeatingImageButton android:id="@+id/menubar_button_volumeminus" android:background="?android:attr/selectableItemBackground" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_volumeminus"/>
         </FrameLayout>
         <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@+id/time_progress" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="0.8">
             <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:id="@+id/time_current" android:paddingLeft="4dp" android:paddingTop="4dp" android:paddingRight="4dp" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
@@ -10,33 +10,33 @@
             <TextView android:textSize="14sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:id="@+id/time_total" android:paddingLeft="4dp" android:paddingTop="4dp" android:paddingRight="4dp" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
         </LinearLayout>
         <FrameLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.1">
-            <android.rk.RockVideoPlayer.RepeatingImageButton android:id="@+id/menubar_button_volumeplus" android:background="@drawable/seletc_framelayout_bk" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_volumeplus"/>
+            <android.rk.RockVideoPlayer.RepeatingImageButton android:id="@+id/menubar_button_volumeplus" android:background="?android:attr/selectableItemBackground" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_volumeplus"/>
         </FrameLayout>
     </LinearLayout>
-    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@+id/menubar_button" android:background="@drawable/bottombar_back" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@+id/menubar_button" android:background="@drawable/holo_controller_background" android:layout_width="match_parent" android:layout_height="wrap_content">
         <FrameLayout android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1">
-            <ImageView android:id="@+id/menubar_button_bookmark" android:background="@drawable/seletc_framelayout_bk" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_bookmark"/>
+            <ImageView android:id="@+id/menubar_button_bookmark" android:background="?android:attr/selectableItemBackground" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_bookmark"/>
         </FrameLayout>
         <FrameLayout android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1">
-            <ImageView android:id="@+id/menubar_button_bright" android:background="@drawable/seletc_framelayout_bk" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_bright5"/>
+            <ImageView android:id="@+id/menubar_button_bright" android:background="?android:attr/selectableItemBackground" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_bright5"/>
         </FrameLayout>
         <FrameLayout android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1">
-            <android.rk.RockVideoPlayer.RepeatingImageButton android:id="@+id/menubar_button_pre" android:background="@drawable/seletc_framelayout_bk" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_button_pre"/>
+            <android.rk.RockVideoPlayer.RepeatingImageButton android:id="@+id/menubar_button_pre" android:background="?android:attr/selectableItemBackground" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="center" android:src="@android:drawable/ic_media_previous"/>
         </FrameLayout>
         <FrameLayout android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1">
-            <ImageView android:id="@+id/menubar_button_play" android:background="@drawable/seletc_framelayout_bk" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_button_pause"/>
+            <ImageView android:id="@+id/menubar_button_play" android:background="?android:attr/selectableItemBackground" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="center" android:src="@android:drawable/ic_media_pause"/>
         </FrameLayout>
         <FrameLayout android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1">
-            <android.rk.RockVideoPlayer.RepeatingImageButton android:id="@+id/menubar_button_next" android:background="@drawable/seletc_framelayout_bk" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_button_next"/>
+            <android.rk.RockVideoPlayer.RepeatingImageButton android:id="@+id/menubar_button_next" android:background="?android:attr/selectableItemBackground" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="center" android:src="@android:drawable/ic_media_next"/>
         </FrameLayout>
         <FrameLayout android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1">
-            <ImageView android:id="@+id/menubar_button_screenmode" android:background="@drawable/seletc_framelayout_bk" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_screenmode_original"/>
+            <ImageView android:id="@+id/menubar_button_screenmode" android:background="?android:attr/selectableItemBackground" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_screenmode_original"/>
         </FrameLayout>
         <FrameLayout android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1">
-            <ImageView android:id="@+id/menubar_button_return" android:background="@drawable/seletc_framelayout_bk" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_return"/>
+            <ImageView android:id="@+id/menubar_button_return" android:background="?android:attr/selectableItemBackground" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_return"/>
         </FrameLayout>
         <FrameLayout android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1">
-            <ImageView android:id="@+id/menubar_button_settings" android:background="@drawable/seletc_framelayout_bk" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_set"/>
+            <ImageView android:id="@+id/menubar_button_settings" android:background="?android:attr/selectableItemBackground" android:focusable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_set"/>
         </FrameLayout>
     </LinearLayout>
 </LinearLayout>
