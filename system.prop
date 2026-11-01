@@ -30,6 +30,7 @@ ro.secure.tscalibration=1
 app.tscalibration.force=1
 
 # ARMv5 software rendering / no GPU hardware composer.
+ro.config.low_ram=true
 ro.config.disable_hw_accel=true
 debug.sf.hw=0
 debug.sf.no_hw_vsync=1
