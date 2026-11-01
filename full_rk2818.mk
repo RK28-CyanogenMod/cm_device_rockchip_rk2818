@@ -56,7 +56,7 @@ PRODUCT_COPY_FILES += \
     device/rockchip/rk2818/bin/swapsetup.sh:system/bin/swapsetup.sh
 
 PRODUCT_PACKAGES += \
-    Gallery \
+    RK28Gallery \
     RKVideoPlayer \
     RockParts \
     RKTSCalibration \

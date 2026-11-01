@@ -19,6 +19,7 @@ LOCAL_PACKAGE_NAME := RockParts
 # only records a tag, and the product variables are merged after every product
 # fragment has been parsed, leaving PRODUCT_PACKAGES empty at that point.
 LOCAL_OVERRIDES_PACKAGES := \
+    Gallery2 \
     Development \
     SpareParts \
     VideoEditor \
