@@ -16,6 +16,7 @@ final class HardwareSettings {
     static final String USB_HOST_NODE =
             "/sys/bus/platform/drivers/dwc_otg/force_usb_mode";
     private static final String[] VIBRATION_NODES = {
+        "/sys/bus/i2c/drivers/i2c_tcs9153/MOTOenable",
         "/sys/bus/spi/drivers/xpt2046_ts/MOTOenable"
     };
 
