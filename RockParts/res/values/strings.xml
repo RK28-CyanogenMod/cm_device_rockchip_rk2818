@@ -21,4 +21,6 @@
 
 	<string name="touchscreen_calibration_title">Touchscreen calibration</string>
 	<string name="touchscreen_calibration_summary">Perform touchscreen linearity calibration to improve touch accuracy</string>
+    <string name="hardware_unavailable">This hardware control is not available on this device.</string>
+    <string name="hardware_write_failed">Could not apply the setting; the previous value was kept.</string>
 </resources>

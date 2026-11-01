@@ -18,4 +18,6 @@
     <string name="touchscreen_vibration_summary_head">触摸屏幕时提供震动反馈</string>
     <string name="touchscreen_calibration_title">触摸屏校准</string>
     <string name="touchscreen_calibration_summary">重新校准触摸屏以提高定位准确度</string>
+    <string name="hardware_unavailable">此设备未提供对应的硬件控制节点。</string>
+    <string name="hardware_write_failed">设置未能生效，已保留原来的选项。</string>
 </resources>
