@@ -57,6 +57,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     Gallery \
+    RKVideoPlayer \
     RockParts \
     RKTSCalibration \
     audio.primary.rk28board \

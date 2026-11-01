@@ -35,7 +35,6 @@ LOCAL_OVERRIDES_PACKAGES := \
     CMUpdater \
     Home \
     RockAudioPlayer \
-    RKVideoPlayer \
     Music \
     Contacts \
     SpeechRecorder \
