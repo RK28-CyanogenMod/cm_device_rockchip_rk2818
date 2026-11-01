@@ -67,3 +67,5 @@ BOARD_EGL_NEEDS_LEGACY_FB := true
 TARGET_DISABLE_TRIPLE_BUFFERING := true
 BOARD_HAVE_PRE_ANDROID_4_2_PMEM := true
 
+# Direct physical storage and the TF-card alias inside the NAND volume.
+BOARD_VOLD_RK28_STORAGE := true

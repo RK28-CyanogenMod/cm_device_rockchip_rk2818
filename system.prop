@@ -12,8 +12,7 @@ persist.sys.use_dithering=0
 persist.sys.use_16bpp_alpha=1
 qemu.sf.lcd_density=120
 ro.sf.lcd_density=120
-ro.additionalmounts=/mnt/nand;/mnt/usb
-ro.vold.switchablepair=/mnt/sdcard,/mnt/nand
+ro.additionalmounts=/mnt/sdcard;/mnt/usb
 wifi.interface=wlan0
 wifi.supplicant_scan_interval=45
 
@@ -38,4 +37,8 @@ debug.sf.no_hw_vsync=1
 # init.rc starts the standalone Jelly Bean compositor. Do not start a second
 # SurfaceFlinger inside system_server after every zygote restart.
 system_init.startsurfaceflinger=0
+
+# The TF card has one MediaStore identity, even with the legacy nested alias.
+testing.mediascanner.skiplist=/mnt/nand/external_sd/
+ro.rk28.nested_sd_path=/mnt/nand/external_sd
 
