@@ -40,6 +40,9 @@ ro.rk28.tablet_ui=true
 # PixelFlinger has no FBO screenshot surface for the rotation animation.
 ro.rk28.no_rotation_anim=true
 
+# Skip both CRT animators and GL capture on the stock RK2818 display.
+ro.rk28.disable_crt=1
+
 # init.rc starts the standalone Jelly Bean compositor. Do not start a second
 # SurfaceFlinger inside system_server after every zygote restart.
 system_init.startsurfaceflinger=0
