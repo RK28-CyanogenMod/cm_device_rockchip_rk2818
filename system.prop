@@ -34,6 +34,9 @@ ro.config.disable_hw_accel=true
 debug.sf.hw=0
 debug.sf.no_hw_vsync=1
 
+# Keep the combined tablet bar on the 800x480 screen at 120 dpi.
+ro.rk28.tablet_ui=true
+
 # init.rc starts the standalone Jelly Bean compositor. Do not start a second
 # SurfaceFlinger inside system_server after every zygote restart.
 system_init.startsurfaceflinger=0

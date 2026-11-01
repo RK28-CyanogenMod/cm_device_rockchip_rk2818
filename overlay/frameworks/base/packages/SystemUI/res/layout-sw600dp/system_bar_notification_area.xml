@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- RK2818: use readable tablet clock and status icons at 120 dpi. -->
+<com.android.systemui.statusbar.tablet.NotificationArea xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/notificationArea" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_alignParentRight="true" android:orientation="horizontal" android:background="?android:attr/listChoiceBackgroundIndicator" android:clickable="true">
+
+    <LinearLayout android:id="@+id/feedbackIconArea" android:layout_width="wrap_content" android:layout_height="match_parent" android:orientation="horizontal">
+
+        <com.android.systemui.statusbar.tablet.InputMethodButton android:id="@+id/imeSwitchButton" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginLeft="8dip" android:src="@drawable/ic_sysbar_ime_default" android:visibility="gone" android:contentDescription="@string/accessibility_ime_switch_button" />
+
+        <com.android.systemui.statusbar.policy.CompatModeButton android:id="@+id/compatModeButton" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginLeft="8dip" android:src="@drawable/ic_sysbar_zoom" android:visibility="gone" android:contentDescription="@string/accessibility_compatibility_zoom_button" />
+
+        <com.android.systemui.statusbar.tablet.NotificationIconArea android:id="@+id/notificationIcons" android:layout_width="wrap_content" android:layout_height="match_parent">
+            <view class="com.android.systemui.statusbar.tablet.NotificationIconArea$IconLayout" android:id="@+id/icons" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_gravity="center_vertical" android:layout_marginLeft="8dp" android:alpha="0.4" />
+        </com.android.systemui.statusbar.tablet.NotificationIconArea>
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/notificationTrigger" android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center">
+        <com.android.systemui.statusbar.policy.Clock android:id="@+id/clock" android:textAppearance="@style/TextAppearance.SystemBar.Clock" android:layout_width="wrap_content" android:layout_height="match_parent" android:singleLine="true" android:paddingLeft="6dip" android:layout_marginRight="8dip" android:gravity="center_vertical|left" android:clickable="false" />
+
+        <TextView android:id="@+id/network_text" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginRight="6dip" android:layout_marginLeft="6dip" android:gravity="center" android:singleLine="true" android:visibility="gone" android:textSize="16sp" android:textColor="#606060" />
+
+        <LinearLayout android:id="@+id/signal_battery_cluster" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginRight="16dp" android:orientation="horizontal" android:gravity="center">
+            <include layout="@layout/signal_cluster_view" android:id="@+id/signal_cluster" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:id="@+id/bluetooth" android:layout_height="32dp" android:layout_width="32dp" android:layout_marginLeft="4dp" android:visibility="gone" android:scaleType="center" />
+            <com.android.systemui.statusbar.policy.CircleBattery android:id="@+id/dock_circle_battery" android:layout_width="wrap_content" android:layout_height="match_parent" android:singleLine="true" android:paddingLeft="4dip" android:gravity="center_vertical|left" />
+            <ImageView android:id="@+id/battery" android:layout_height="32dp" android:layout_width="24dp" android:layout_marginLeft="4dp" android:scaleType="center" />
+        </LinearLayout>
+    </LinearLayout>
+</com.android.systemui.statusbar.tablet.NotificationArea>

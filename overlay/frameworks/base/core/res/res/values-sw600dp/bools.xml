@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- N5PRO2 is sw640dp at 120 dpi; use the standard PreferenceActivity panes. -->
+    <bool name="preferences_prefer_dual_pane">true</bool>
+</resources>
