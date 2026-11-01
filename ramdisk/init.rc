@@ -514,6 +514,12 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wi
     disabled
     oneshot
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL wlan0
+# libnetutils supplies the interface in dynamic start arguments.
+service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
+    disabled
+    oneshot
+
+# Android requests DHCP renewal through this separate oneshot service.
+service iprenew_wlan0 /system/bin/dhcpcd -n
     disabled
     oneshot
