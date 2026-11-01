@@ -87,3 +87,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.service.adb.enable=1 ro.adb.secure
 # Stock DSP/PV player behind the Android 4.2 media service adapter.
 PRODUCT_PACKAGES += librk28pvlegacy librk28pvplayer libopencore_player_rk28 libsurfaceflinger_client
 
+# UOR/TCS9153 variant of the RK2818 touchscreen.
+PRODUCT_COPY_FILES += \
+    device/rockchip/rk2818/idc/UOR-touch.idc:system/usr/idc/UOR-touch.idc
