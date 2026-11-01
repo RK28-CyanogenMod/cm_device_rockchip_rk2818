@@ -58,3 +58,7 @@ ro.rk28.nested_sd_path=/mnt/nand/external_sd
 # Circular charging indication with two software redraws per second.
 ro.rk28.battery_anim_ms=500
 
+# Do not run per-JNI-call debug verification on the ARM926 production UI.
+dalvik.vm.checkjni=false
+debug.checkjni=0
+
