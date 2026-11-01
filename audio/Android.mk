@@ -7,7 +7,7 @@ LOCAL_MODULE := librk28audioshim
 LOCAL_MODULE_TAGS := optional
 LOCAL_SRC_FILES := \
     rk28_audio_shim.cpp \
-    ../../../../frameworks/base/media/libmedia/AudioParameter.cpp
+    ../../../../frameworks/av/media/libmedia/AudioParameter.cpp
 LOCAL_SHARED_LIBRARIES := liblog libcutils libutils
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)
 include $(BUILD_SHARED_LIBRARY)
@@ -22,9 +22,10 @@ LOCAL_SRC_FILES := \
     rk28_audio_loader.cpp
 # The vendored HAL speaks Gingerbread channel masks (stereo = 0xc); ICS uses
 # 0x3.  This makes the legacy bridge translate masks in both directions.
-LOCAL_CFLAGS += -DUSES_AUDIO_LEGACY
-LOCAL_C_INCLUDES := hardware/libhardware_legacy/include
+LOCAL_CFLAGS += -DUSES_AUDIO_LEGACY -DLOGV=ALOGV -DLOGD=ALOGD -DLOGI=ALOGI -DLOGW=ALOGW -DLOGE=ALOGE
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/legacy hardware/libhardware_legacy/include
 LOCAL_SHARED_LIBRARIES := \
+    librk28audioshim \
     libcutils \
     libutils \
     libmedia \

@@ -1,17 +1,18 @@
 /*
- * ICS audio HAL module for RK2818.
+ * Jelly Bean audio HAL module for RK2818.
  *
  * The RK2818 audio driver code lives in Rockchip's prebuilt libaudio.so, which
  * implements Gingerbread's AudioHardwareInterface (createAudioHardware()).
  * Android 4.0 no longer loads that library itself, so this module dlopen()s it
- * and lets libaudiohw_legacy's audio_hw_hal.cpp bridge expose it as an ICS
+ * and lets libaudiohw_legacy's audio_hw_hal.cpp bridge expose it as an Android 4.2
  * audio_hw_device.
  */
 #define LOG_TAG "rk28_audio"
 #include <utils/Log.h>
 #include <dlfcn.h>
 
-#include <hardware_legacy/AudioHardwareInterface.h>
+// Keep the GB vendor vtable layout independent of platform include ordering.
+#include "legacy/hardware_legacy/AudioHardwareInterface.h"
 
 namespace android_audio_legacy {
 
@@ -20,7 +21,6 @@ typedef void *(*CreateAudioHardwareFn)(void);
 static AudioHardwareInterface *loadVendorHal()
 {
     static const char *kShimPaths[] = {
-        "/data/local/tmp/librk28audioshim.so",
         "/system/lib/librk28audioshim.so",
     };
 
@@ -34,7 +34,6 @@ static AudioHardwareInterface *loadVendorHal()
     }
 
     static const char *kLibAudioPaths[] = {
-        "/data/local/tmp/libaudio_patched.so",
         "/system/lib/libaudio.so",
     };
 
