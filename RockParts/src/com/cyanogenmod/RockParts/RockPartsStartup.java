@@ -5,44 +5,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import android.util.Log;
 
-public class RockPartsStartup extends BroadcastReceiver
-{
-   private void writeValue(String parameter, int value) {
-      File file = new File(parameter);
-      if (!file.exists() || !file.canWrite()) {
-         return;
-      }
-      try {
-          FileOutputStream fos = new FileOutputStream(file);
-          fos.write(String.valueOf(value).getBytes());
-          fos.flush();
-          fos.close();
-      } catch (FileNotFoundException e) {
-         // Optional RK2818 sysfs node is not present.
-      } catch (IOException e) {
-         // Sysfs does not support all regular-file operations.
-      }
-   }
-
-   @Override
-   public void onReceive(final Context context, final Intent bootintent) {
-      SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-
-       // USB Host Mode
-       if(prefs.getBoolean("usb_host_mode", false))
-        writeValue("/sys/bus/platform/drivers/dwc_otg/force_usb_mode", 1);
-       else
-        writeValue("/sys/bus/platform/drivers/dwc_otg/force_usb_mode", 0);
-
-       // Touch Vibration
-       if(prefs.getBoolean("touchscreen_vibration", false))
-           writeValue("/sys/bus/spi/drivers/xpt2046_ts/MOTOenable", 1);
-       else
-           writeValue("/sys/bus/spi/drivers/xpt2046_ts/MOTOenable", 0);
-   }
+/** Restores saved hardware state once at boot; starts no services or workers. */
+public class RockPartsStartup extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (!Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) return;
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        HardwareSettings.writeBoolean(HardwareSettings.USB_HOST_NODE,
+                prefs.getBoolean("usb_host_mode", false));
+        String vibrationNode = HardwareSettings.findVibrationNode();
+        if (vibrationNode != null) {
+            HardwareSettings.writeBoolean(vibrationNode,
+                    prefs.getBoolean("touchscreen_vibration", false));
+        }
+        Log.i("RockParts", "boot restore finished");
+    }
 }
